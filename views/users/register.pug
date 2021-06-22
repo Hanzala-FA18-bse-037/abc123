@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+  h1 Signup
+  form(action="/register",method="post")
+        .form-group
+            label(for="name") Name
+            input#name(type="text", class="form-control", name="name")
+        .form-group
+            label(for="email") Email
+            input#email(type="text", class="form-control", name="email")
+        .form-group
+            label(for="password") Password
+            input#price(type="password", class="form-control", name="password")
+        .radio-group
+            label Gender <p><p>
+            <input type="radio" name="gender" value="Male"> Male<br>
+            <input type="radio" name="gender" value="Female"> Female<br>
+            <input type="radio" name="gender" value="Other"> Other
+        input(type="submit", class="btn btn-info" value="Register")
