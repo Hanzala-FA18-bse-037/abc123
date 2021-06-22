@@ -2,8 +2,8 @@ extends layouts/app
 
 include components/forms
 block content
-    h5 Add User Record
-    form(action="/user", method="post")
+    h5 Signup Here
+    form(action="/Register", method="post")
         .row
             .col-md-6
                 +input("text","name","Name","Name","name",name,nameError)
@@ -16,8 +16,8 @@ block content
                 .d-flex.justify-content-between.mt-2
                     +radio-inline("Male", "gender", "male")
                     +radio-inline("Female", "gender", "male")
-                    +radio-inline("Others", "gender", "other")
-            
+                    +radio-inline("Others", "gender", "other") 
+                span.text-danger #{genderError}
         +submit("Submit","submit","submit","btn-success")
 block scripts
     

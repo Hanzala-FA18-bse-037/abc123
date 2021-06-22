@@ -25,9 +25,12 @@ router.get('/Register',function (req,res){
 router.get('/Login',function (req,res){
     return res.render("Login");
 });
+router.get('/Dashboard',function (req,res){
+    return res.send("abc");
+});
 
 // Store Value
-router.post('/',function (req,res){
+router.post('/Register',function (req,res){
     var user = new User();
     user.name = req.body.name
     user.email = req.body.email;
@@ -35,19 +38,41 @@ router.post('/',function (req,res){
     user.gender = req.body.gender;
     user.save((err, doc) => {
         if (!err)
-            return res.redirect("/user")
+            return res.redirect("/Dashboard")
         else {
             if (err.name === 'ValidationError') {
                 handleValidationError(err, req.body);
                 console.log(req.body);
-                res.render("user/create",req.body)
+                res.render("Register",req.body)
             }
             else
                 console.log('Error during record insertion : ' + err);
         }
     });
-
 });
+
+
+router.post('/Login',function (req,res){
+    var user = new User();
+    user.email = req.body.email;
+    user.password = req.body.password;
+    user.name = "usama";
+    user.gender = "Male";
+    user.save((err, doc) => {
+        if (!err)
+            return res.redirect("/Dashboard")
+        else {
+            if (err.name === 'ValidationError') {
+                handleValidationError(err, req.body);
+                console.log(req.body);
+                res.render("Login",req.body)
+            }
+            else
+                console.log('Error during record insertion : ' + err);
+        }
+    });
+});
+
 
 // Show Update Form
 router.get('/:id/edit',function (req, res) {
