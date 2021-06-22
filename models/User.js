@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-facultyScehma = new mongoose.Schema({
+userScehma = new mongoose.Schema({
     name: {
         type: String,
         required: "Name is required."
@@ -16,32 +16,16 @@ facultyScehma = new mongoose.Schema({
         type: String,
         required: 'Email is required'
     },
-    address: {
-        street_address: {
-            type: String,
-            required: 'Street Address is required'
-        },
-        city: {
-            type: String,
-            required: "City is Required"
-        },
-        country: {
-            type: String,
-            required: 'Country is Required'
-        }
-    },
-    course_code: {
-        type: String
-    },
-    phone_numbers: {
-        type: Array
+    password:{
+        type: String,
+        required: 'Please enter the password'
     }
 });
 
 // Custom validation for email
-facultyScehma.path('email').validate((val) => {
+userScehma.path('email').validate((val) => {
     let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return emailRegex.test(val);
 }, 'Invalid E-mail Format.');
-const Faculty = mongoose.model('Faculty',facultyScehma);
-module.exports = Faculty
+const User = mongoose.model('User',userScehma);
+module.exports = User

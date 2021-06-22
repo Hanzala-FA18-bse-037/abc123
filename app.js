@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require("method-override");
 require('dotenv').config();
 var router = require('./routes/index');
-var facultyRouter = require('./controllers/facultyController');
+var userRouter = require('./controllers/userController');
 
 var app = express();
 
@@ -26,7 +26,7 @@ app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'))
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'))
 app.use('/', router);
-app.use('/faculty', facultyRouter);
+app.use('/User', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

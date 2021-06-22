@@ -1,0 +1,15 @@
+extends layouts/app
+
+include components/forms
+block content
+    
+    form(action="/user", method="post")
+        .row
+            .col-md-6
+                +input("email","email","Email","Email","email",email,emailError)
+            .col-md-6
+                +input("password","password","Password","Paasword","password",password,emailError)
+                
+        +submit("Submit","submit","submit","btn-success")
+block scripts
+    
