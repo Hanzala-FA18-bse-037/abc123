@@ -31,11 +31,7 @@ router.post('/',function (req,res){
     var user = new User();
     user.name = req.body.name
     user.email = req.body.email;
-    user.address = {
-        street_address: req.body.street_address,
-        city: req.body.city,
-        country: req.body.country
-    };
+    user.password = req.body.password;
     user.gender = req.body.gender;
     user.save((err, doc) => {
         if (!err)
