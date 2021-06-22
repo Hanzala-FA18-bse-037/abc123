@@ -10,6 +10,7 @@ var usersRouter = require("./routes/users");
 var session = require("express-session");
 var sessionAuth = require("./middlewares/sessionAuth");
 var app = express();
+require('dontenv').config();
 app.use(session({ secret: "keyboard cat", cookie: { maxAge: 60000 } }));
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -42,7 +43,7 @@ app.use(function (err, req, res, next) {
 });
 
 mongoose
-  .connect("mongodb+srv://hanzi:hanzi@cluster0.jsjx1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+  .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
